@@ -1,9 +1,8 @@
 build:
-	docker build --tag bryandollery/katacoda .
+	docker build --tag knowledgehut/katacoda .
 
 run:
-	docker run -it --rm -v $$PWD:/work -w /work -v /mnt/c/Users/bryan/git/:/git -v ~/.gitconfig:/root/.gitconfig:ro --name katacoda --hostname katacoda -v /var/run/docker.sock:/var/run/docker.sock --entrypoint bash bryandollery/katacoda
+	docker run -it --rm -v $$PWD:/work -w /work -v ~/.gitconfig:/root/.gitconfig:ro --name katacoda --hostname katacoda -v /var/run/docker.sock:/var/run/docker.sock knowledgehut/katacoda
 
 install:
-	echo "alias kk='docker run -it --rm -v \$$PWD:/work -w /work -v /mnt/c/Users/bryan/git/:/git -v ~/.gitconfig:/root/.gitconfig:ro --name katacoda --hostname katacoda -v /var/run/docker.sock:/var/run/docker.sock --entrypoint bash bryandollery/katacoda'" >> ~/.bash_aliases
-
+	printf "alias kk=\"%s\"" 'docker run -it --rm -v $$PWD:/work -w /work -v ~/.gitconfig:/root/.gitconfig:ro --name katacoda --hostname katacoda -v /var/run/docker.sock:/var/run/docker.sock knowledgehut/katacoda' >> ~/.bash_aliases
